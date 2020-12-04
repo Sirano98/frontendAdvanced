@@ -7,6 +7,7 @@ var result = document.querySelector(".result");
 button.addEventListener("click", reverseString);
 
 // Imperative
+
 function reverseString() {
     result.innerHTML = "";
     var userData = input.value;
@@ -18,6 +19,7 @@ function reverseString() {
 };
 
 // Declarative
+
 // function reverseString() {
 //     result.innerHTML = "";
 //     var userData = input.value;

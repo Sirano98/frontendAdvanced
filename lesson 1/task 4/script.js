@@ -6,7 +6,7 @@ var max = 0;
 
 // Imperative
 
-// function findLongestWordLength() {
+// function findLongestWordLength(str) {
 //     for (var i = 0; i < str.length; i++) {
 //         if (str[i] !== " ") {
 //             counter++;
@@ -23,6 +23,16 @@ var max = 0;
 //     return max;
 // }
 
-// alert(findLongestWordLength());
-
 // Declarative
+
+function findLongestWordLength(str) {
+    var newStr = str.split(" ");
+    for (var i = 0; i < newStr.length; i++) {
+        if (max < newStr[i].length) {
+            max = newStr[i].length;
+        }
+    };
+    return max
+};
+
+alert(findLongestWordLength(str));
