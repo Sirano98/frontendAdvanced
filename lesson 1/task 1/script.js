@@ -1,14 +1,9 @@
 // Convert Celsius to Fahrenheit
 
-var input = document.querySelector("input");
-var button = document.querySelector("button");
-var result = document.querySelector(".result");
+var celsius = 20;
 
-button.addEventListener("click", convertToF);
+function convertToF(celsius) {
+    return celsius * 1.8 + 32;
+};
 
-function convertToF() {
-    var userData = input.value;
-    var fahrenheit = userData.value * 1.8 + 32;
-    result.innerHTML = fahrenheit + " &deg F";
-    input.value = "";
-}
+console.log(convertToF(celsius));

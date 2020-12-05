@@ -1,24 +1,25 @@
 // Factorialize a Number
 
-
-var userNumber = +prompt("Введите число");
+var num = 5;
 
 // Imperative
-var result = 1;
-function factorial(userNumber) {
-    for (var i = 1; i <= userNumber; i++) {
+
+function factorial(num) {
+    var result = 1,
+        i;
+    for (i = 1; i <= num; i += 1) {
         result *= i;
     }
     return result
 };
 
 // Declarative
-// function factorial(userNumber) {
-//     if (userNumber === 1) {
+// function factorial(num) {
+//     if (num === 1) {
 //         return 1;
 //     } else {
-//         return userNumber * factorial(userNumber - 1);
-//     }
-// }
+//         return num * factorial(num - 1);
+//     };
+// };
 
-alert(factorial(userNumber))
+console.log(factorial(num));

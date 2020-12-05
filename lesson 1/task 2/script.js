@@ -1,28 +1,22 @@
 // Reverse a String
 
-var input = document.querySelector("input");
-var button = document.querySelector("button");
-var result = document.querySelector(".result");
-
-button.addEventListener("click", reverseString);
-
+var str = "hello";
 // Imperative
 
-function reverseString() {
-    result.innerHTML = "";
-    var userData = input.value;
-
-    for (var i = userData.length - 1; i >= 0; i--) {
-        result.innerHTML += userData[i];
+function reverseString(str) {
+    var size = str.length - 1,
+        newStr = "",
+        i;
+    for (i = size; i >= 0; i -= 1) {
+        newStr += str[i];
     };
-    input.value = "";
+    return newStr;
 };
 
 // Declarative
 
-// function reverseString() {
-//     result.innerHTML = "";
-//     var userData = input.value;
-//     result.innerHTML = userData.split('').reverse().join('');
-//     input.value = "";
+// function reverseString(str) {
+//     return str.split('').reverse().join('');
 // };
+
+console.log(reverseString(str));
