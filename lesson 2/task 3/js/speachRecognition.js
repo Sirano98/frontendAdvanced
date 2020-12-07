@@ -1,7 +1,6 @@
 window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 
 var recognition = new SpeechRecognition();
-recognition.interimResults = true;
 recognition.lang = 'en-US';
 
 microphone.addEventListener('click', function (event) {
@@ -16,4 +15,5 @@ recognition.addEventListener('result', function (event) {
         .map(function (value) {
             return value.transcript;
         });
+    getWeatherByUserData();
 });

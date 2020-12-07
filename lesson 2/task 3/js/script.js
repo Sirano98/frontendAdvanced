@@ -1,19 +1,20 @@
-var weatherDescription = getElement('weather-description');
-var temperature = getElement('temperature');
-var humidity = getElement('humidity');
-var windSpeed = getElement('wind-speed');
-var city = getElement('city');
-var getWeatherButton = getElement('get-weather-button');
-var input = document.querySelector('input');
-var microphone = document.querySelector('img');
+var weatherDescription = document.querySelector('.description');
+var temperature = document.querySelector('.temperature');
+var humidity = document.querySelector('.humidity');
+var windSpeed = document.querySelector('.wind-speed');
+var city = document.querySelector('.city');
+var getWeatherButton = document.querySelector('.get-weather-button');
+var feelsLike = document.querySelector('.feels-like');
+var pressure = document.querySelector('.pressure');
+var input = document.querySelector('.input-search');
+var microphone = document.querySelector('.microphone');
+var modalText = document.querySelector('.modal-text');
 
 document.addEventListener('DOMContentLoaded', getGeolocationData);
 
 getWeatherButton.addEventListener('click', getWeatherByUserData);
 
-function getElement(id) {
-    return document.getElementById(id);
-}
+getWeatherButton.addEventListener('click', cleanInput);
 
 function getGeolocationData() {
     if (navigator) {
@@ -36,11 +37,13 @@ function getWeatherData(long, lat) {
 }
 
 function displayData(data) {
-    city.innerHTML = 'weather for ' + data.name;
+    city.innerHTML = data.name;
     weatherDescription.innerHTML = getWeatherDescription(data.weather);
     temperature.innerText = getTemperature(data.main.temp);
-    windSpeed.innerHTML = 'wind speed ' + data.wind.speed + ' meter/sec';
-    humidity.innerHTML = 'humidity ' + data.main.humidity + ' %';
+    windSpeed.innerHTML = 'Wind speed \<br> ' + data.wind.speed + ' meter/sec';
+    humidity.innerHTML = 'Humidity \<br> ' + data.main.humidity + ' %';
+    pressure.innerHTML = 'Pressure \<br> ' + data.main.pressure + ' hPa';
+    feelsLike.innerHTML = 'Feels-like \<br> ' + data.main.feels_like + ' °C';
 }
 
 function getWeatherDescription(weather) {
@@ -48,11 +51,11 @@ function getWeatherDescription(weather) {
     weather.forEach(function (details) {
         description = details.description;
     })
-    return 'weather description - ' + description;
+    return description;
 }
 
 function getTemperature(degreesKelvin) {
-    return 'temperature ' + Math.round(degreesKelvin - 273.15) + ' °C';
+    return Math.round(degreesKelvin - 273.15) + ' °C';
 }
 
 function getWeatherByUserData() {
@@ -63,5 +66,8 @@ function getWeatherByUserData() {
         .then(function (data) {
             displayData(data);
         })
+}
+
+function cleanInput() {
     input.value = '';
 }

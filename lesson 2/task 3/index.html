@@ -4,25 +4,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
     <title>Weather App</title>
 </head>
 
 <body>
-    <section>
-        <h2>Weather App</h2>
-        <input type="text" placeholder="city search">
-        <img src="img/microphone.svg" alt="microphone" width="1%" height="1%">
-        <button id="get-weather-button">Get Weather</button>
-        <p id="city"></p>
-        <ul>
-            <li id="weather-description"></li>
-            <li id="temperature"></li>
-            <li id="wind-speed"></li>
-            <li id="humidity"></li>
-        </ul>
-    </section>
-    <script src="script.js"></script>
-    <script src="speachRecognition.js"></script>
+    <div class="container">
+        <div class="card">
+            <div class="card-search">
+                <div class="input-wrapper">
+                    <input type="text" placeholder="city search" class="input-search">
+                    <img src="img/microphone.svg" alt="microphone" class="microphone">
+                </div>
+                <button class="get-weather-button">Search</button>
+            </div>
+            <div class="card-information">
+                <p class="city"></p>
+                <div class="temperature"></div>
+                <div class="description"></div>
+                <div class="wrapper">
+                    <div class="wind-speed info"></div>
+                    <div class="humidity info"></div>
+                    <div class="feels-like info"></div>
+                    <div class="pressure info"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/script.js"></script>
+    <script src="js/speachRecognition.js"></script>
 </body>
 
 </html>
