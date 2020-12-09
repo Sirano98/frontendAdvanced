@@ -1,4 +1,4 @@
-var weatherDescription = document.querySelector('.description');
+var description = document.querySelector('.description');
 var temperature = document.querySelector('.temperature');
 var humidity = document.querySelector('.humidity');
 var windSpeed = document.querySelector('.wind-speed');
@@ -9,6 +9,7 @@ var pressure = document.querySelector('.pressure');
 var input = document.querySelector('.input-search');
 var microphone = document.querySelector('.microphone');
 var modalText = document.querySelector('.modal-text');
+var card = document.querySelector('.card-information');
 
 document.addEventListener('DOMContentLoaded', getGeolocationData);
 
@@ -16,13 +17,26 @@ getWeatherButton.addEventListener('click', getWeatherByUserData);
 
 getWeatherButton.addEventListener('click', cleanInput);
 
+input.addEventListener("keypress", function (event) {
+    if (event.charCode === 13) {
+        getWeatherByUserData();
+        cleanInput();
+    }
+})
+
+function geoSuccess(position) {
+    getWeatherData(position.coords.longitude, position.coords.latitude);
+}
+
+function geoError() {
+    description.innerHTML = "Impossible to get location";
+}
+
 function getGeolocationData() {
     if (navigator) {
-        navigator.geolocation.getCurrentPosition(function (position) {
-            getWeatherData(position.coords.longitude, position.coords.latitude);
-        })
+        navigator.geolocation.getCurrentPosition(geoSuccess, geoError)
     } else {
-        alert('Your browser does not support Navigator API');
+        description.innerHTML = "Impossible to get location";
     }
 }
 
@@ -38,7 +52,7 @@ function getWeatherData(long, lat) {
 
 function displayData(data) {
     city.innerHTML = data.name;
-    weatherDescription.innerHTML = getWeatherDescription(data.weather);
+    description.innerHTML = getWeatherDescription(data.weather);
     temperature.innerText = getTemperature(data.main.temp);
     windSpeed.innerHTML = 'Wind speed \<br> ' + data.wind.speed + ' meter/sec';
     humidity.innerHTML = 'Humidity \<br> ' + data.main.humidity + ' %';
@@ -47,11 +61,11 @@ function displayData(data) {
 }
 
 function getWeatherDescription(weather) {
-    var description;
+    var weatherDescription;
     weather.forEach(function (details) {
-        description = details.description;
+        weatherDescription = details.description;
     })
-    return description;
+    return weatherDescription;
 }
 
 function getTemperature(degreesKelvin) {
@@ -66,6 +80,19 @@ function getWeatherByUserData() {
         .then(function (data) {
             displayData(data);
         })
+        .catch(function () {
+            showMessage()
+        })
+}
+
+function showMessage() {
+    city.innerHTML = "";
+    description.innerHTML = "No data for your request";
+    temperature.innerText = "";
+    windSpeed.innerHTML = "";
+    humidity.innerHTML = "";
+    pressure.innerHTML = "";
+    feelsLike.innerHTML = "";
 }
 
 function cleanInput() {

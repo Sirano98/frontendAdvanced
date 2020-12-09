@@ -3,7 +3,7 @@ window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecogn
 var recognition = new SpeechRecognition();
 recognition.lang = 'en-US';
 
-microphone.addEventListener('click', function (event) {
+microphone.addEventListener('click', function () {
     recognition.start();
 });
 
