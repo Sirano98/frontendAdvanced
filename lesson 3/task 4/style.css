@@ -43,10 +43,9 @@ button {
 }
 
 .quote {
-    width: 50rem;
-    height: 20rem;
     font-size: 2.5rem;
     text-align: center;
+    margin-bottom: 1rem;
 }
 
 .author {
