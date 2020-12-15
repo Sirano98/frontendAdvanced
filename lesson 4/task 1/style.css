@@ -1,0 +1,75 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+.wrapper {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#loginForm {
+    display: flex;
+    justify-content: center;
+    border: 2px solid #0062ff;
+    border-radius: 20px;
+}
+
+fieldset {
+    border: none;
+}
+
+label {
+    margin: 2rem;
+    display: block;
+}
+span {
+    display: inline-block;
+    width: 6rem;
+    text-align: right;
+    margin-right: 0.5rem;
+    font-size: 1.5rem;
+}
+#email,
+#password {
+    width: 30rem;
+    height: 4rem;
+}
+
+#email:hover,
+#password:hover {
+    border: 2px solid #0062ff;
+}
+
+button {
+    display: block;
+    width: 10rem;
+    height: 2.5rem;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2rem;
+    background-color: #0062ff;
+    color: #ffffff;
+    outline: none;
+    border: none;
+    border-radius: 20px;
+}
+
+#emailValidation,
+#passwordValidation {
+    text-align: center;
+    color: #ff0d00;
+    font-size: 1.4rem;
+    height: 0.5rem;
+}
